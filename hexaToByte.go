@@ -8,7 +8,7 @@ import (
 
 func main() {
 	
-	hexString := "00000000000000000f0f1234567890abcdef"
+	hexString := "233300000000000233300000000000000000000000000000000000000001ffff"
 
 
 	byteArray, err := hex.DecodeString(hexString)

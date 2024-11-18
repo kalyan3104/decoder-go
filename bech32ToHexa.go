@@ -10,7 +10,7 @@ import (
 
 func main() {
 
-	bech32Address := "moa1qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqhsx6tv"
+	bech32Address := "moa1yvesqqqqqqqqyvesqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqplllsyjss50"
 
 	hrp, data, err := bech32.Decode(bech32Address)
 	if err != nil {
