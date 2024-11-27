@@ -6,9 +6,9 @@ import (
 )
 
 
-func ExtractMoa1qqqAddresses(input string) []string {
+func ExtractErd1qqqAddresses(input string) []string {
 	
-	re := regexp.MustCompile(`(moa1qqq[0-9a-z]+)`)
+	re := regexp.MustCompile(`(erd1qqq[0-9a-z]+)`)
 
 	
 	matches := re.FindAllString(input, -1)
@@ -18,253 +18,43 @@ func ExtractMoa1qqqAddresses(input string) []string {
 func main() {
 
 	input := `
-/home/magnus/Desktop/addressesTesting/drt-chain-es-indexer-go/integrationtests/testdata/claimRewards/tx-claim-rewards.json
-  7,16:   "receiver": "moa1qqqqqqqqqqqqqqqpqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqplllsxxctf0",
-
-/home/magnus/Desktop/addressesTesting/drt-chain-es-indexer-go/integrationtests/testdata/delegators/delegator-after-delegate.json
-  3,16:   "contract": "moa1qqqqqqqqqqqqqqqpqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqhllllss2qdpm",
-
-/home/magnus/Desktop/addressesTesting/drt-chain-es-indexer-go/integrationtests/testdata/delegators/delegator-after-revert.json
-  3,16:   "contract": "moa1qqqqqqqqqqqqqqqpqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqhllllss2qdpm",
-
-/home/magnus/Desktop/addressesTesting/drt-chain-es-indexer-go/integrationtests/testdata/delegators/delegator-after-un-delegate-1.json
-  3,16:   "contract": "moa1qqqqqqqqqqqqqqqpqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqhllllss2qdpm",
-
-/home/magnus/Desktop/addressesTesting/drt-chain-es-indexer-go/integrationtests/testdata/delegators/delegator-after-un-delegate-2.json
-  3,16:   "contract": "moa1qqqqqqqqqqqqqqqpqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqhllllss2qdpm",
-
-/home/magnus/Desktop/addressesTesting/drt-chain-es-indexer-go/integrationtests/testdata/delegators/delegator-after-withdraw.json
-  3,16:   "contract": "moa1qqqqqqqqqqqqqqqpqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqhllllss2qdpm",
-
-/home/magnus/Desktop/addressesTesting/drt-chain-es-indexer-go/integrationtests/testdata/multiTransferWithScCallAndErrorSignaledBySC/transaction-after-execution-of-scr-dst-shard.json
-  23,6:     "moa1qqqqqqqqqqqqqpgqt6ltx52ukss9d2qag2k67at28a36xc9lkp2swhu7e9",
-  24,6:     "moa1qqqqqqqqqqqqqpgqt6ltx52ukss9d2qag2k67at28a36xc9lkp2swhu7e9"
-
-/home/magnus/Desktop/addressesTesting/drt-chain-es-indexer-go/integrationtests/testdata/multiTransferWithScCallAndErrorSignaledBySC/transaction-executed-on-source.json
-  23,6:     "moa1qqqqqqqqqqqqqpgqt6ltx52ukss9d2qag2k67at28a36xc9lkp2swhu7e9",
-  24,6:     "moa1qqqqqqqqqqqqqpgqt6ltx52ukss9d2qag2k67at28a36xc9lkp2swhu7e9"
-
-/home/magnus/Desktop/addressesTesting/drt-chain-es-indexer-go/integrationtests/testdata/nftTransferCrossShard/op-nft-transfer-sc-call-after-refund.json
-  33,6:     "moa1qqqqqqqqqqqqqpgq78y09lw93f3udvsplshdv2vk957l5vl70n4sv89j36"
-
-/home/magnus/Desktop/addressesTesting/drt-chain-es-indexer-go/integrationtests/testdata/nftTransferCrossShard/tx-complete-with-status.json
-  24,6:     "moa1qqqqqqqqqqqqqpgq57szwud2quysucrlq2e97ntdysdl7v4ejz3q7f4au9"
-
-/home/magnus/Desktop/addressesTesting/drt-chain-es-indexer-go/integrationtests/testdata/nftTransferCrossShard/tx-nft-transfer-failed-on-dst.json
-  33,6:     "moa1qqqqqqqqqqqqqpgq57szwud2quysucrlq2e97ntdysdl7v4ejz3q7f4au9"
-
-/home/magnus/Desktop/addressesTesting/drt-chain-es-indexer-go/integrationtests/testdata/nftTransferCrossShard/tx-nft-transfer-sc-call-after-refund.json
-  33,6:     "moa1qqqqqqqqqqqqqpgq78y09lw93f3udvsplshdv2vk957l5vl70n4sv89j36"
-
-/home/magnus/Desktop/addressesTesting/drt-chain-es-indexer-go/integrationtests/testdata/nftTransferCrossShard/tx-nft-transfer-sc-call-source.json
-  24,6:     "moa1qqqqqqqqqqqqqpgq78y09lw93f3udvsplshdv2vk957l5vl70n4sv89j36"
-
-/home/magnus/Desktop/addressesTesting/drt-chain-es-indexer-go/integrationtests/testdata/nftTransferCrossShard/tx-nft-transfer-success-source-second.json
-  20,6:     "moa1qqqqqqqqqqqqqpgq57szwud2quysucrlq2e97ntdysdl7v4ejz3q7f4au9"
-
-/home/magnus/Desktop/addressesTesting/drt-chain-es-indexer-go/integrationtests/testdata/nftTransferCrossShard/tx-nft-transfer.json
-  25,6:     "moa1qqqqqqqqqqqqqpgq57szwud2quysucrlq2e97ntdysdl7v4ejz3q7f4au9"
-
-/home/magnus/Desktop/addressesTesting/drt-chain-es-indexer-go/integrationtests/testdata/nftTransferCrossShardWithScCall/cross-shard-transfer-with-sc-call.json
-  33,6:     "moa1qqqqqqqqqqqqqpgq57szwud2quysucrlq2e97ntdysdl7v4ejz3q7f4au9"
-
-/home/magnus/Desktop/addressesTesting/drt-chain-es-indexer-go/integrationtests/testdata/relayedTx/relayed-tx-after-refund.json
-  24,6:     "moa1qqqqqqqqqqqqqpgq3dswlnnlkfd3gqrcv3dhzgnvh8ryf27g5rfs5q4ukq"
-
-/home/magnus/Desktop/addressesTesting/drt-chain-es-indexer-go/integrationtests/testdata/relayedTx/relayed-tx-source.json
-  24,6:     "moa1qqqqqqqqqqqqqpgq3dswlnnlkfd3gqrcv3dhzgnvh8ryf27g5rfs5q4ukq"
-
-/home/magnus/Desktop/addressesTesting/drt-chain-es-indexer-go/integrationtests/testdata/scCallIntraShard/claim-rewards.json
-  7,16:   "receiver": "moa1qqqqqqqqqqqqqqqpqqqqqqqqqqqqqqqqqqqqqqqqqqqqqfhlllls4mdmxn",
-
-/home/magnus/Desktop/addressesTesting/drt-chain-es-indexer-go/integrationtests/testdata/scCallIntraShard/sc-call-fail.json
-  7,16:   "receiver": "moa1qqqqqqqqqqqqqqqpqqqqqqqqqqqqqqqqqqqqqqqqqqqqqfhlllls4mdmxn",
-
-/home/magnus/Desktop/addressesTesting/drt-chain-es-indexer-go/integrationtests/testdata/scCallWithIssueDcdt/scr-with-callback-executed-on-destination-shard.json
-  8,14:   "sender": "moa1qqqqqqqqqqqqqqqpqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqzllls29jpxv",
-  9,16:   "receiver": "moa1qqqqqqqqqqqqqpgqahumqen35dr9k4rmcnd70mqt5t4mt7ey4nwqr2akec",
-
-/home/magnus/Desktop/addressesTesting/drt-chain-es-indexer-go/integrationtests/testdata/scCallWithIssueDcdt/scr-with-callback-executed-on-source.json
-  8,14:   "sender": "moa1qqqqqqqqqqqqqqqpqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqzllls29jpxv",
-  9,16:   "receiver": "moa1qqqqqqqqqqqqqpgqahumqen35dr9k4rmcnd70mqt5t4mt7ey4nwqr2akec",
-
-/home/magnus/Desktop/addressesTesting/drt-chain-es-indexer-go/integrationtests/testdata/scCallWithIssueDcdt/scr-with-issue-executed-on-destination-shard.json
-  8,14:   "sender": "moa1qqqqqqqqqqqqqpgqahumqen35dr9k4rmcnd70mqt5t4mt7ey4nwqr2akec",
-  9,16:   "receiver": "moa1qqqqqqqqqqqqqqqpqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqzllls29jpxv",
-
-/home/magnus/Desktop/addressesTesting/drt-chain-es-indexer-go/integrationtests/testdata/scCallWithIssueDcdt/scr-with-issue-executed-on-source-shard.json
-  8,14:   "sender": "moa1qqqqqqqqqqqqqpgqahumqen35dr9k4rmcnd70mqt5t4mt7ey4nwqr2akec",
-  9,16:   "receiver": "moa1qqqqqqqqqqqqqqqpqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqzllls29jpxv",
-
-/home/magnus/Desktop/addressesTesting/drt-chain-es-indexer-go/integrationtests/testdata/scCallWithIssueDcdt/tx-after-execution-of-callback-on-destination-shard.json
-  7,16:   "receiver": "moa1qqqqqqqqqqqqqpgqahumqen35dr9k4rmcnd70mqt5t4mt7ey4nwqr2akec",
-
-/home/magnus/Desktop/addressesTesting/drt-chain-es-indexer-go/integrationtests/testdata/scCallWithIssueDcdt/tx-after-execution-on-source-shard.json
-  7,16:   "receiver": "moa1qqqqqqqqqqqqqpgqahumqen35dr9k4rmcnd70mqt5t4mt7ey4nwqr2akec",
-
-/home/magnus/Desktop/addressesTesting/drt-chain-es-indexer-go/integrationtests/testdata/scCallWithIssueDcdt/tx-in-op-index-execution-of-callback-on-destination-shard.json
-  7,16:   "receiver": "moa1qqqqqqqqqqqqqpgqahumqen35dr9k4rmcnd70mqt5t4mt7ey4nwqr2akec",
-
-/home/magnus/Desktop/addressesTesting/drt-chain-es-indexer-go/integrationtests/testdata/scDeploy/tx-sc-deploy.json
-  7,16:   "receiver": "moa1qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqhsx6tv",
-
-/home/magnus/Desktop/addressesTesting/drt-chain-es-indexer-go/integrationtests/claimRewards_test.go
-  55,22: 	addressReceiver := "moa1qqqqqqqqqqqqqqqpqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqplllsxxctf0"
-
-/home/magnus/Desktop/addressesTesting/drt-chain-es-indexer-go/integrationtests/delegators_test.go
-  49,30: 					Address: decodeAddress("moa1qqqqqqqqqqqqqqqpqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqhllllss2qdpm"),
-  80,30: 					Address: decodeAddress("moa1qqqqqqqqqqqqqqqpqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqhllllss2qdpm"),
-  110,30: 					Address: decodeAddress("moa1qqqqqqqqqqqqqqqpqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqhllllss2qdpm"),
-  150,30: 					Address: decodeAddress("moa1qqqqqqqqqqqqqqqpqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqhllllss2qdpm"),
-
-/home/magnus/Desktop/addressesTesting/drt-chain-es-indexer-go/integrationtests/multiTransferWithScCallAndErrorSignaledBySC_test.go
-  53,15: 	address2 := "moa1qqqqqqqqqqqqqpgqa0fsfshnff4n76jhcye6k7uvd7qacsq42jpsvzkct6"
-
-/home/magnus/Desktop/addressesTesting/drt-chain-es-indexer-go/integrationtests/nftTransferCrossShard_test.go
-  55,15: 	address2 := "moa1qqqqqqqqqqqqqpgq78y09lw93f3udvsplshdv2vk957l5vl70n4sv89j36"
-  190,15: 	address2 := "moa1qqqqqqqqqqqqqpgq57szwud2quysucrlq2e97ntdysdl7v4ejz3q7f4au9"
-  322,15: 	address2 := "moa1qqqqqqqqqqqqqpgq57szwud2quysucrlq2e97ntdysdl7v4ejz3q7f4au9"
-  473,15: 	address2 := "moa1qqqqqqqqqqqqqpgq57szwud2quysucrlq2e97ntdysdl7v4ejz3q7f4au9"
-
-/home/magnus/Desktop/addressesTesting/drt-chain-es-indexer-go/integrationtests/nftTransferCrossWithScCall_test.go
-  52,15: 	address2 := "moa1qqqqqqqqqqqqqpgq57szwud2quysucrlq2e97ntdysdl7v4ejz3q7f4au9"
-
-/home/magnus/Desktop/addressesTesting/drt-chain-es-indexer-go/integrationtests/relayedTx_test.go
-  54,15: 	address3 := "moa1qqqqqqqqqqqqqpgq3dswlnnlkfd3gqrcv3dhzgnvh8ryf27g5rfs5q4ukq"
-
-/home/magnus/Desktop/addressesTesting/drt-chain-es-indexer-go/integrationtests/scCallIntraShard_test.go
-  47,15: 	address2 := "moa1qqqqqqqqqqqqqqqpqqqqqqqqqqqqqqqqqqqqqqqqqqqqqfhlllls4mdmxn"
-  142,15: 	address2 := "moa1qqqqqqqqqqqqqqqpqqqqqqqqqqqqqqqqqqqqqqqqqqqqqfhlllls4mdmxn"
-
-/home/magnus/Desktop/addressesTesting/drt-chain-es-indexer-go/integrationtests/scCallWithIssueDct_test.go
-  54,22: 	contractAddress := "moa1qqqqqqqqqqqqqpgqahumqen35dr9k4rmcnd70mqt5t4mt7ey4nwqr2akec"
-  65,19: 	dcdtSystemSC := "moa1qqqqqqqqqqqqqqqpqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqzllls29jpxv"
-
-/home/magnus/Desktop/addressesTesting/drt-chain-es-indexer-go/integrationtests/scDeploy_test.go
-  48,28: 		RcvAddr:  decodeAddress("moa1qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqhsx6tv"),
-  78,44: 							Topics:     [][]byte{decodeAddress("moa1qqqqqqqqqqqqqpgq4t2tqxpst9a6qttpak8cz8wvz6a0nses5qfq58uvt5"), decodeAddress("moa12m3x8jp6dl027pj5f2nw6ght2cyhhjfrs86cdwsa8xn83r375qfqwk8z6l"), []byte("codeHash")},
-  99,18: 	ids = []string{"moa1qqqqqqqqqqqqqpgq4t2tqxpst9a6qttpak8cz8wvz6a0nses5qfq58uvt5"}
-  120,44: 							Topics:     [][]byte{decodeAddress("moa1qqqqqqqqqqqqqpgq4t2tqxpst9a6qttpak8cz8wvz6a0nses5qfq58uvt5"), decodeAddress("moa12m3x8jp6dl027pj5f2nw6ght2cyhhjfrs86cdwsa8xn83r375qfqwk8z6l"), []byte("secondCodeHash")},
-  131,18: 	ids = []string{"moa1qqqqqqqqqqqqqpgq4t2tqxpst9a6qttpak8cz8wvz6a0nses5qfq58uvt5"}
-  150,35: 							Address:    decodeAddress("moa1qqqqqqqqqqqqqpgq4t2tqxpst9a6qttpak8cz8wvz6a0nses5qfq58uvt5"),
-  163,18: 	ids = []string{"moa1qqqqqqqqqqqqqpgq4t2tqxpst9a6qttpak8cz8wvz6a0nses5qfq58uvt5"}
-  182,35: 							Address:    decodeAddress("moa1qqqqqqqqqqqqqpgq4t2tqxpst9a6qttpak8cz8wvz6a0nses5qfq58uvt5"),
-  195,18: 	ids = []string{"moa1qqqqqqqqqqqqqpgq4t2tqxpst9a6qttpak8cz8wvz6a0nses5qfq58uvt5"}
-
-/home/magnus/Desktop/addressesTesting/drt-chain-es-indexer-go/process/elasticproc/transactions/transactionsProcessor_test.go
-  609,28: 				RcvAddr: decodeBech32("moa1qqqqqqqqqqqqqqqpqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqzllls29jpxv"),
-  617,35: 				SndAddr:        decodeBech32("moa1qqqqqqqqqqqqqqqpqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqzllls29jpxv"),
-  623,35: 				SndAddr:        decodeBech32("moa1qqqqqqqqqqqqqqqpqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqzllls29jpxv"),
-  638,28: 				RcvAddr: decodeBech32("moa1qqqqqqqqqqqqqqqpqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqzllls29jpxv"),
-  646,35: 				SndAddr:        decodeBech32("moa1qqqqqqqqqqqqqqqpqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqzllls29jpxv"),
-
-/home/magnus/Desktop/addressesTesting/drt-chain-go/cmd/node/config/config.toml
-  702,10:         "moa1qqqqqqqqqqqqqpgqr46jrxr6r2unaqh75ugd308dwx5vgnhwh47qx5lw9p",
-
-/home/magnus/Desktop/addressesTesting/drt-chain-go/cmd/node/config/genesis.json
-  9,19:       "address": "moa1qqqqqqqqqqqqqpgqrchxzx5uu8sv3ceg8nx8cxc0gesezure5awq7du8ha",
-  20,19:       "address": "moa1qqqqqqqqqqqqqpgqrchxzx5uu8sv3ceg8nx8cxc0gesezure5awq7du8ha",
-  31,19:       "address": "moa1qqqqqqqqqqqqqpgqrchxzx5uu8sv3ceg8nx8cxc0gesezure5awq7du8ha",
-  42,19:       "address": "moa1qqqqqqqqqqqqqpgqrchxzx5uu8sv3ceg8nx8cxc0gesezure5awq7du8ha",
-  53,19:       "address": "moa1qqqqqqqqqqqqqpgqrchxzx5uu8sv3ceg8nx8cxc0gesezure5awq7du8ha",
-  64,19:       "address": "moa1qqqqqqqqqqqqqpgqrchxzx5uu8sv3ceg8nx8cxc0gesezure5awq7du8ha",
-  75,19:       "address": "moa1qqqqqqqqqqqqqpgqrchxzx5uu8sv3ceg8nx8cxc0gesezure5awq7du8ha",
-  86,19:       "address": "moa1qqqqqqqqqqqqqpgqrchxzx5uu8sv3ceg8nx8cxc0gesezure5awq7du8ha",
-  97,19:       "address": "moa1qqqqqqqqqqqqqpgqrchxzx5uu8sv3ceg8nx8cxc0gesezure5awq7du8ha",
-  108,19:       "address": "moa1qqqqqqqqqqqqqpgqrchxzx5uu8sv3ceg8nx8cxc0gesezure5awq7du8ha",
-
-/home/magnus/Desktop/addressesTesting/drt-chain-go/cmd/node/config/nodesSetup.json
-  14,19:       "address": "moa1qqqqqqqqqqqqqpgqrchxzx5uu8sv3ceg8nx8cxc0gesezure5awq7du8ha",
-  20,19:       "address": "moa1qqqqqqqqqqqqqpgqrchxzx5uu8sv3ceg8nx8cxc0gesezure5awq7du8ha",
-  26,19:       "address": "moa1qqqqqqqqqqqqqpgqrchxzx5uu8sv3ceg8nx8cxc0gesezure5awq7du8ha",
-  32,19:       "address": "moa1qqqqqqqqqqqqqpgqrchxzx5uu8sv3ceg8nx8cxc0gesezure5awq7du8ha",
-
-/home/magnus/Desktop/addressesTesting/drt-chain-go/examples/address_test.go
-  54,61: 	require.Equal(t, core.MetachainShardId, computeShardID(t, "moa1qqqqqqqqqqqqqqqpqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqzllls29jpxv", shardCoordinator))
-  114,19: 	assert.Equal(t, "moa1qqqqqqqqqqqqqqqpqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqlllsz87dvw", stakingScAddress)
-  115,19: 	assert.Equal(t, "moa1qqqqqqqqqqqqqqqpqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqplllsxxctf0", validatorScAddress)
-  116,19: 	assert.Equal(t, "moa1qqqqqqqqqqqqqqqpqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqzllls29jpxv", dcdtScAddress)
-  117,19: 	assert.Equal(t, "moa1qqqqqqqqqqqqqqqpqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqrlllswy58rd", governanceScAddress)
-  118,19: 	assert.Equal(t, "moa1qqqqqqqqqqqqqqqpqqqqqqqqqrllllllllllllllllllllllllls7zfxnx", jailingAddress)
-  119,19: 	assert.Equal(t, "moa1qqqqqqqqqqqqqqqpqqqqqqqqlllllllllllllllllllllllllllswawjsh", endOfEpochAddress)
-  120,19: 	assert.Equal(t, "moa1qqqqqqqqqqqqqqqpqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqylllsjrx4c2", delegationManagerScAddress)
-  121,19: 	assert.Equal(t, "moa1qqqqqqqqqqqqqqqpqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq0llllsdwmvu2", firstDelegationScAddress)
-  122,19: 	assert.Equal(t, "moa1qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqhsx6tv", contractDeployScAdress)
-
-/home/magnus/Desktop/addressesTesting/drt-chain-go/integrationTests/chainSimulator/staking/stake/stakeAndUnStake_test.go
-  94,10: 	rcv := "moa1qqqqqqqqqqqqqqqpqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqplllsxxctf0"
-  228,10: 	rcv := "moa1qqqqqqqqqqqqqqqpqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqplllsxxctf0"
-  2559,10: 	rcv := "moa1qqqqqqqqqqqqqqqpqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqplllsxxctf0"
-
-/home/magnus/Desktop/addressesTesting/drt-chain-go/integrationTests/factory/testdata/genesis.json
-  8,19:       "address": "moa1qqqqqqqqqqqqqpgqrchxzx5uu8sv3ceg8nx8cxc0gesezure5awq7du8ha",
-  18,19:       "address": "moa1qqqqqqqqqqqqqpgqrchxzx5uu8sv3ceg8nx8cxc0gesezure5awq7du8ha",
-  28,19:       "address": "moa1qqqqqqqqqqqqqpgqrchxzx5uu8sv3ceg8nx8cxc0gesezure5awq7du8ha",
-  38,19:       "address": "moa1qqqqqqqqqqqqqpgqrchxzx5uu8sv3ceg8nx8cxc0gesezure5awq7du8ha",
-  48,19:       "address": "moa1qqqqqqqqqqqqqpgqrchxzx5uu8sv3ceg8nx8cxc0gesezure5awq7du8ha",
-  58,19:       "address": "moa1qqqqqqqqqqqqqpgqrchxzx5uu8sv3ceg8nx8cxc0gesezure5awq7du8ha",
-  68,19:       "address": "moa1qqqqqqqqqqqqqpgqrchxzx5uu8sv3ceg8nx8cxc0gesezure5awq7du8ha",
-  78,19:       "address": "moa1qqqqqqqqqqqqqpgqrchxzx5uu8sv3ceg8nx8cxc0gesezure5awq7du8ha",
-  88,19:       "address": "moa1qqqqqqqqqqqqqpgqrchxzx5uu8sv3ceg8nx8cxc0gesezure5awq7du8ha",
-
-/home/magnus/Desktop/addressesTesting/drt-chain-go/integrationTests/factory/testdata/nodesSetup.json
-  13,19:       "address": "moa1qqqqqqqqqqqqqpgqrchxzx5uu8sv3ceg8nx8cxc0gesezure5awq7du8ha"
-  17,19:       "address": "moa1qqqqqqqqqqqqqpgqrchxzx5uu8sv3ceg8nx8cxc0gesezure5awq7du8ha"
-  21,19:       "address": "moa1qqqqqqqqqqqqqpgqrchxzx5uu8sv3ceg8nx8cxc0gesezure5awq7du8ha"
-  25,19:       "address": "moa1qqqqqqqqqqqqqpgqrchxzx5uu8sv3ceg8nx8cxc0gesezure5awq7du8ha"
-  29,19:       "address": "moa1qqqqqqqqqqqqqpgqrchxzx5uu8sv3ceg8nx8cxc0gesezure5awq7du8ha"
-  33,19:       "address": "moa1qqqqqqqqqqqqqpgqrchxzx5uu8sv3ceg8nx8cxc0gesezure5awq7du8ha"
-  37,19:       "address": "moa1qqqqqqqqqqqqqpgqrchxzx5uu8sv3ceg8nx8cxc0gesezure5awq7du8ha"
-  41,19:       "address": "moa1qqqqqqqqqqqqqpgqrchxzx5uu8sv3ceg8nx8cxc0gesezure5awq7du8ha"
-  45,19:       "address": "moa1qqqqqqqqqqqqqpgqrchxzx5uu8sv3ceg8nx8cxc0gesezure5awq7du8ha"
-
-/home/magnus/Desktop/addressesTesting/drt-chain-go/integrationTests/vm/testInitializer.go
-  86,23: const DNSV2Address = "moa1qqqqqqqqqqqqqpgqcy67yanvwpepqmerkq6m8pgav0tlvgwxjmdqc06e67"
-
-/home/magnus/Desktop/addressesTesting/drt-chain-go/node/chainSimulator/components/testOnlyProcessingNode_test.go
-  262,16: 	scAddress := "moa1qqqqqqqqqqqqqpgqrchxzx5uu8sv3ceg8nx8cxc0gesezure5awq7du8ha"
-
-/home/magnus/Desktop/addressesTesting/drt-chain-go/node/chainSimulator/chainSimulator_test.go
-  226,22: 	contractAddress := "moa1qqqqqqqqqqqqqpgqmzzm05jeav6d5qvna0q2pmcllelkz8xddz3sf2kd6y"
-  307,22: 	contractAddress := "moa1qqqqqqqqqqqqqpgqmzzm05jeav6d5qvna0q2pmcllelkz8xddz3sf2kd6y"
-
-/home/magnus/Desktop/addressesTesting/drt-chain-go/node/external/logs/logsConverter_test.go
-  15,28: 	contractAddressBech32 := "moa1qqqqqqqqqqqqqpgqxwakt2g7u9atsnr03gqcgmhcv38pt7mkd94qhg3njm"
-
-/home/magnus/Desktop/addressesTesting/drt-chain-go/node/external/transactionAPI/apiTransactionProcessor_test.go
-  1100,20: 		Sender:         "moa1qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqhsx6tv",
-
-/home/magnus/Desktop/addressesTesting/drt-chain-go/node/external/transactionAPI/gasUsedAndFeeProcessor_test.go
-  214,24: 		Receivers: []string{"moa1qqqqqqqqqqqqqpgq6wegs2xkypfpync8mn2sa5cmpqjlvrhwz5nq9p8t5h"},
-
-/home/magnus/Desktop/addressesTesting/drt-chain-go/node/node_test.go
-  4363,44: 		isMigrated, err := n.IsDataTrieMigrated("moa1qqqqqqqqqqqqqqqpqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqplllsxxctf0", api.AccountQueryOptions{})
-  4383,44: 		isMigrated, err := n.IsDataTrieMigrated("moa1qqqqqqqqqqqqqqqpqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqplllsxxctf0", api.AccountQueryOptions{})
-  4410,44: 		isMigrated, err := n.IsDataTrieMigrated("moa1qqqqqqqqqqqqqqqpqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqplllsxxctf0", api.AccountQueryOptions{})
-  4437,44: 		isMigrated, err := n.IsDataTrieMigrated("moa1qqqqqqqqqqqqqqqpqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqplllsxxctf0", api.AccountQueryOptions{})
-
-/home/magnus/Desktop/addressesTesting/drt-chain-go/outport/process/transactionsfee/transactionsFeeProcessor_test.go
-  88,27: 		RcvAddr:        []byte("moa1qqqqqqqqqqqqqpgq3dswlnnlkfd3gqrcv3dhzgnvh8ryf27g5rfs5q4ukq"),
-  108,30: 					SndAddr:        []byte("moa1qqqqqqqqqqqqqpgq3dswlnnlkfd3gqrcv3dhzgnvh8ryf27g5rfs5q4ukq"),
-  146,28: 			SndAddr:        []byte("moa1qqqqqqqqqqqqqpgq3dswlnnlkfd3gqrcv3dhzgnvh8ryf27g5rfs5q4ukq"),
-  398,28: 			SndAddr:        []byte("moa1qqqqqqqqqqqqqpgq3dswlnnlkfd3gqrcv3dhzgnvh8ryf27g5rfs5q4ukq"),
-  446,28: 			SndAddr:        []byte("moa1qqqqqqqqqqqqqpgq3dswlnnlkfd3gqrcv3dhzgnvh8ryf27g5rfs5q4ukq"),
-  501,28: 			SndAddr:        []byte("moa1qqqqqqqqqqqqqqqpqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqzllls29jpxv"),
-  538,21: 		RcvAddr:  []byte("moa1qqqqqqqqqqqqqqqpqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqzllls29jpxv"),
-  546,28: 			SndAddr:        []byte("moa1qqqqqqqqqqqqqqqpqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqzllls29jpxv"),
-
-/home/magnus/Desktop/addressesTesting/drt-chain-go/testscommon/integrationtests/stringers_test.go
-  67,12: 		RcvAddr: moa1qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqhsx6tv
-
-/home/magnus/Desktop/addressesTesting/drt-chain-scenario-go/scenario/expression/integrationTests/exprInterpreterReconstructor_test.go
-  192,44: 	result, err := ei.InterpretString("bech32:moa1qqqqqqqqqqqqqqqpqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqplllsxxctf0")
-  195,27: 	require.Equal(t, "bech32:moa1qqqqqqqqqqqqqqqpqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqplllsxxctf0", er.Reconstruct(result, mer.AddressHint))
-
-/home/magnus/Desktop/addressesTesting/drt-chain-vm-common-go/parsers/dataField/parseSingleNFTTransfer_test.go
-  17,40: var receiverSC, _ = pubKeyConv.Decode("moa1qqqqqqqqqqqqqpgqp699jngundfqw07d8jzkepucvpzush6k3wvqfqn6lk")
+erd1qqqqqqqqqqqqqpgqz0n6qdgvrz4z23rllustjaqa63cegza40fusz30jca	0000000000000000050013E7A0350c18aA25447fff20b9741Dd471940bb57a79
+erd1qqqqqqqqqqqqqpgqz0wkk0j6y4h0mcxfxsg023j4x5sfgrmz0n4s4swp7a	0000000000000000050013dd6B3E5A256eFdE0c93410F546553520940f627ceB
+erd1qqqqqqqqqqqqqpgqz0ycyug2rqtpyrh5p33y9vqjv95s3xmaqpnq7uz3qq	0000000000000000050013C982710A1816120eF40C6242B0126169089B7D0066
+erd1qqqqqqqqqqqqqpgqz2aa6uaptw8ryf254u93xqwl4lkvu9vmqzpsxshu57	0000000000000000050012BBdD73a15b8e322554AF0b1301dFaFecCe159B0083
+erd1qqqqqqqqqqqqqpgqz2ctz77j9we0r99mnhehv24he3pxmsmq0n4sntf4n7	0000000000000000050012B0B17bd22bB2F194Bb9dF3762AB7CC426Dc3607CEB
+erd1qqqqqqqqqqqqqpgqz2tgn80j5p5hqh4hx69uc27gz0drcjmmg20skf0wru	000000000000000005001296899df2a069705eB7368Bcc2BC813Da3c4B7b429f
+erd1qqqqqqqqqqqqqpgqz35q0ecvzpzhyvum0etghqfcq7d6lsztqqasganmau	00000000000000000500146807E70C104572339B7E568B8138079baFC04B003B
+erd1qqqqqqqqqqqqqpgqz5gjr6e8c2qcpqawepr0t2urnkq07p4aqr0q2wwhgd	00000000000000000500151121eb27c2818083Aec846f5ab839D80ff06Bd00dE
+erd1qqqqqqqqqqqqqpgqz5jh90tx3d45rjxd8yqkmgt69dqp5ckeyl5s34wdmf	00000000000000000500152572BD668B6B41c8Cd39016Da17A2B401A62d927E9
+erd1qqqqqqqqqqqqqpgqz5rth288cy2njyetxeyeqqjv08g4ftn2jpmq2sr3jd	000000000000000005001506bBA8E7C11539132B364990024C79d154ae6A9076
+erd1qqqqqqqqqqqqqpgqz7s9ut07qm9uh2rtzzuntnnuxrpejjscqp6q03wqv4	0000000000000000050017A05e2dFe06cBcbA86b10b935ce7C30c3994a180074
+erd1qqqqqqqqqqqqqpgqz88aj0jnyk2245qdckqlr0u3esrkm227up4sduprh7	0000000000000000050011CFd93e532594aAD00dc581F1bF91Cc076da95eE06b
+erd1qqqqqqqqqqqqqpgqz8q2ggskllzh9dp5988uz42jn95pqeghu00s0mlgca	0000000000000000050011C0a42216FFC572b43429CfC155529968106517E3DF
+erd1qqqqqqqqqqqqqpgqzaxt2e4630kpp6uxg5hl6yfefls72us0kklsxhl8fk	00000000000000000500174CB566bA8bEC10EB86452ffd11394Fe1E5720fb5Bf
+erd1qqqqqqqqqqqqqpgqze3nszzj6ngfw3g0thm30r3v4tzudexdqz5q6kztm5	000000000000000005001663380852d4d097450F5dF7178E2CaAc5C6e4CD00a8
+erd1qqqqqqqqqqqqqpgqzhpcdd8jg77m06zwqmhgw9xdmukn6pfeh2uslry9u8	0000000000000000050015C386b4F247bdb7e84E06eE8714CddF2d3D0539bAb9
+erd1qqqqqqqqqqqqqpgqzjctu8xrgn8jmfp503tajjvzz2zq60v92jpsslkh5a	0000000000000000050014b0BE1cc344CF2DA4347c57D9498212840D3D855483
+erd1qqqqqqqqqqqqqpgqzjstzefzeastekqpxz6ysh3d0k9eap9aexkscvsdqn	0000000000000000050014A0B16522cF60bCD80130b4485E2d7d8B9E84bDc9aD
+erd1qqqqqqqqqqqqqpgqzps75vsk97w9nsx2cenv2r2tyxl4fl402jpsx78m9j	000000000000000005001061eA32162F9C59c0cAc666c50D4b21bf54FeAF5483
+erd1qqqqqqqqqqqqqpgqzq2szpgrh95nj6quqgre2qs3x9hct827qqcq28x3p2	000000000000000005001015010503b96939681C0207950211316f859d5E0030
+erd1qqqqqqqqqqqqqpgqzqlavpqgwkrnslzrl05aqms2au2327asexksc4u3qg	00000000000000000500103FD604087587387C43fBE9D06E0aef15157bb0c9AD
+erd1qqqqqqqqqqqqqpgqzqsrh358v57maeclstufm4w2wrsc52cq0n4s38vfzd	0000000000000000050010203BC687653DbEE71f82f89DD5cA70e18a2b007CeB
+erd1qqqqqqqqqqqqqpgqzqvm5ywqqf524efwrhr039tjs29w0qltkklsa05pk7	000000000000000005001019BA11c00268aaE52e1DC6f89572828AE783EbB5bF
+erd1qqqqqqqqqqqqqpgqzs3y0vr4t4sqyet32t6jp9m85l3hlr93u00sdj9rxa	00000000000000000500142247b0755D6002657152f5209767A7E37f8Cb1E3Df
+erd1qqqqqqqqqqqqqpgqzsqek20mul9t07kwj8fswjl85qnmysweqrvs4u6qq3	0000000000000000050014019B29fbE7CaB7faCE91d3074be7A027b241d900D9
+erd1qqqqqqqqqqqqqpgqzt7clww7329ajkq07x295h7hvl2hgnsaexks5m7sen	0000000000000000050012fD8fb9de8a8bd9580Ff1945A5fd767d5744e1DC9aD
+erd1qqqqqqqqqqqqqpgqzud07wsp6ghwsr8rwdhwt3pgrq6aveelznyq3h0yft	00000000000000000500171afF3A01D22EE80ce3736ee5c4281835d6673f14C8
+erd1qqqqqqqqqqqqqpgqzuxy0ve8scj6jyl82gzy9m26lmd6m69kg20s5gt357	00000000000000000500170c47B3278625A913E7520442ED5aFedBADe8b6429F
+erd1qqqqqqqqqqqqqpgqzvcvh8ur47nlwxsa9wf7gvrlmf764aerczfsnsjudc	000000000000000005001330cb9f83Afa7f71A1d2B93E4307fdA7daAf723C093
+erd1qqqqqqqqqqqqqpgqzw0c6t3puxg4rfw9ae8zc2xl3wvmqwxmqprsucygxr	00000000000000000500139f8d2E21E19151a5C5Ee4e2c28df8B99b038db0047
+erd1qqqqqqqqqqqqqpgqzw0d0tj25qme9e4ukverjjjqle6xamay0n4s5r0v9g	00000000000000000500139eD7ae4aa03792E6bcb332394A40fE746EEfa47CeB
+erd1qqqqqqqqqqqqqpgqzwl6axaq2kfjaglfsrm3eqc0rs3cn85rqrast276y9	0000000000000000050013BFaE9bA055932EA3E980f71C830F1C23899e8300Fb
+erd1qqqqqqqqqqqqqpgqzwv3sn2h4juyya2aadacmrt4hqj9r7a70n4shpwswh	000000000000000005001399184d57aCB842755deb7B8D8d75b82451FBBE7ceB
+erd1qqqqqqqqqqqqqpgqzy0qwv0jf0yk8tysll0y6ea0fhpfqlp32jpsder9ne	00000000000000000500111E0731f24BC963Ac90FfDe4D67Af4dc2907C315483
 	`
 
-	addresses := ExtractMoa1qqqAddresses(input)
+	addresses := ExtractErd1qqqAddresses(input)
 	for _, address := range addresses {
 		fmt.Println(address)
 	}

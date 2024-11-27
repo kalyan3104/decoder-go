@@ -1,0 +1,50 @@
+
+Address Generation and Structure in MultiversX
+
+Address Format
+Addresses in the MultiversX system follow a specific format consisting of a prefix and a suffix. Here is a breakdown of the address format:
+
+
+erd1qqqqqqqqqqqqqpgq0g4pxn2tzj3h6uf9dhn5z36rz80n2pzqyl5s3skep7
+￼
+Common Prefix
+The prefix erd1qqqqqqqqqqqqqpgq is used as a default.
+
+Unique Suffix
+The suffix varies and represents the unique identifier for each address, which is typically derived from the specific public key or other unique data.
+
+Here are some example addresses:
+
+Code
+￼
+Prefix: erd1qqqqqqqqqqqqqpgq
+Suffix: 00fq2h0ypfjkncrpsrhf5e478u20jp2cy6mss33whw
+hexa code: 00000000000000000500 7bd2055DE40a6569E06180ee9a66bE3f14F9055826B7
+
+Prefix: erd1qqqqqqqqqqqqqpgq
+Suffix: 0358sm3p4jkhtpk78t6lydp2ekj3yexju00sspvwdr
+hexa code: 00000000000000000500 7C68786E21AcaD7586de3Af5F2342ACDA51264d2e3dF
+
+
+     
+    
+    0000000000000000                       -  8 bytes of zero
+    0500                                    -  2 bytes for VM type   15C386b4F247bdb7e84E06eE8714CddF2d3D0539 -  owner hash 20 bytes
+   bAb9                                     -  shard 2 bytes 
+   
+Example:
+
+0000000000000000050015C386b4F247bdb7e84E06eE8714CddF2d3D0539bAb9
+---------------------------------------------------------------------------------------------------------------------￼
+Address Generation Code References
+Addresses are generated using the following code references:
+
+https://github.com/multiversx/mx-sdk-rs/blob/master/framework/snippets/src/interactor/interactor_dns.rs  - Rust                                      
+
+https://github.com/multiversx/mx-sdk-js-core/blob/9de1d6a084658b025139d4326b02b097843b4e10/src/address.ts  - TypeScript
+
+https://github.com/multiversx/mx-deprecated-sdk-py-core/blob/main/multiversx_sdk_core/account.py   - pyhton
+
+https://github.com/multiversx/mx-sdk-kotlin/blob/main/src/main/java/com/elrond/erdkotlin/domain/dns/ComputeDnsAddressUsecase.kt   - kotlin
+
+
